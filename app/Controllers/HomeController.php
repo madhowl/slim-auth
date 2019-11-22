@@ -7,12 +7,15 @@
  */
 
 namespace App\Controllers;
+use Slim\Views\Twig as View;
 
-
-class HomeController
+class HomeController extends BaseController
 {
+
     public function index($request,$response)
     {
-        return 'Home Controller';
+        return $this->container->view->render($response, 'home.twig');
     }
+
+
 }
