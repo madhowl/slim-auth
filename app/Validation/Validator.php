@@ -11,15 +11,17 @@ class Validator
 {
     protected $errors;
 
-    public function validate ($reqest,array $rules)
+    public function validate ($request,array $rules)
     {
         foreach ($rules as $field => $rule){
             try {
-                $rule->setName(ucfirst($field))->assert($reqest->getParam($field));
+                $rule->setName(ucfirst($field))->assert($request->getParam($field));
             } catch (NestedValidationException $e) {
-                $this->errors[$field] = $e->getMessage();
+                $this->errors[$field] = $e->getMessages();
             }
         }
+
+        $_SESSION['errors'] = $this->errors;
 
         return $this;
     }

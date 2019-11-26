@@ -9,20 +9,38 @@
                     <h4 class="card-title">Sign Up</h4>
                 </div>
                 <div class="card-body">
+                   {# {{ errors | json_encode }} #}
+
                     <form action="{{ path_for('auth.signup') }}" method="post">
                         <div class="form-group">
                             <label for="">User name:</label>
-                            <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId"
+                            <input type="text" class="form-control{{ errors.name ? ' is-invalid' : '' }}" name="name" id="name" aria-describedby="helpId"
                                    placeholder="">
+                            {% if errors.name %}
+                            <div class="invalid-feedback">
+                                {{ errors.name | first }}
+                            </div>
+                            {% endif %}
                         </div>
                         <div class="form-group">
                             <label for="">E-mail</label>
-                            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId"
+                            <input type="text" class="form-control{{ errors.email ? ' is-invalid' : '' }}" name="email" id="email" aria-describedby="emailHelpId"
                                    placeholder="">
+                            {% if errors.email %}
+                                <div class="invalid-feedback">
+                                    {{ errors.email | first }}
+                                </div>
+                            {% endif %}
                         </div>
+
                         <div class="form-group">
                             <label for="">Password</label>
-                            <input type="password" class="form-control" name="password" id="password" placeholder="">
+                            <input type="password" class="form-control{{ errors.password ? ' is-invalid' : '' }}" name="password" id="password" placeholder="">
+                            {% if errors.password %}
+                                <div class="invalid-feedback">
+                                    {{ errors.password  | first }}
+                                </div>
+                            {% endif %}
                         </div>
                         <button type="submit" class="btn btn-primary">Sign Up</button>
                     </form>
