@@ -14,8 +14,7 @@
                     <form action="{{ path_for('auth.signup') }}" method="post">
                         <div class="form-group">
                             <label for="">User name:</label>
-                            <input type="text" class="form-control{{ errors.name ? ' is-invalid' : '' }}" name="name" id="name" aria-describedby="helpId"
-                                   placeholder="">
+                            <input type="text" class="form-control{{ errors.name ? ' is-invalid' : '' }}" name="name" id="name"  placeholder="" value="{{ old.name }}">
                             {% if errors.name %}
                             <div class="invalid-feedback">
                                 {{ errors.name | first }}
@@ -24,8 +23,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">E-mail</label>
-                            <input type="text" class="form-control{{ errors.email ? ' is-invalid' : '' }}" name="email" id="email" aria-describedby="emailHelpId"
-                                   placeholder="">
+                            <input type="text" class="form-control{{ errors.email ? ' is-invalid' : '' }}" name="email" id="email"  placeholder="" value="{{ old.email }}">
                             {% if errors.email %}
                                 <div class="invalid-feedback">
                                     {{ errors.email | first }}
@@ -35,7 +33,7 @@
 
                         <div class="form-group">
                             <label for="">Password</label>
-                            <input type="password" class="form-control{{ errors.password ? ' is-invalid' : '' }}" name="password" id="password" placeholder="">
+                            <input type="password" class="form-control{{ errors.password ? ' is-invalid' : '' }}" name="password" id="password" placeholder="" >
                             {% if errors.password %}
                                 <div class="invalid-feedback">
                                     {{ errors.password  | first }}
