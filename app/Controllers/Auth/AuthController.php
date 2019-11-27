@@ -44,7 +44,14 @@ class AuthController extends BaseController
 
     public function postSignIN($request, $response)
     {
-        // TODO k;jzfgjk;
+        $auth = $this->auth->attempt(
+            $request->getParam('email'),
+            $request->getParam('password')
+        );
+        if (!$auth){
+            return $response->withRedirect($this->router->pathFor('auth.signin'));
+        }
+        return $response->withRedirect($this->router->pathFor('home'));
     }
 
 }

@@ -53,8 +53,13 @@ $container['HomeController'] = function ($container){
 $container['AuthController'] = function ($container){
     return new \App\Controllers\Auth\AuthController($container);
 };
+
 $container['csrf'] = function ($container){
     return new \Slim\Csrf\Guard;
+};
+
+$container['auth'] = function ($container){
+    return new App\Auth\Auth;
 };
 
 $app->add(new App\Middleware\ValidationErrorsMiddleware($container));

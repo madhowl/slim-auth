@@ -13,11 +13,11 @@
 
                     <form action="{{ path_for('auth.signin') }}" method="post">
                         <div class="form-group">
-                            <label for="">User name:</label>
-                            <input type="text" class="form-control{{ errors.name ? ' is-invalid' : '' }}" name="name" id="name"  placeholder="" value="{{ old.name }}">
-                            {% if errors.name %}
+                            <label for="">E-mail</label>
+                            <input type="text" class="form-control{{ errors.email ? ' is-invalid' : '' }}" name="email" id="email"  placeholder="" value="{{ old.email }}">
+                            {% if errors.email %}
                                 <div class="invalid-feedback">
-                                    {{ errors.name | first }}
+                                    {{ errors.email | first }}
                                 </div>
                             {% endif %}
                         </div>
