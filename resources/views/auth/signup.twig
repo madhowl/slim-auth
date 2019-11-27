@@ -40,7 +40,9 @@
                                 </div>
                             {% endif %}
                         </div>
+
                         <button type="submit" class="btn btn-primary">Sign Up</button>
+                        {{ csrf.field | raw }}
                     </form>
                 </div>
             </div>
