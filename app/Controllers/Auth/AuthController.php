@@ -36,4 +36,15 @@ class AuthController extends BaseController
 
         return $response->withRedirect($this->router->pathFor('home'));
     }
+        public function getSignIN($request, $response)
+    {
+
+        return $this->view->render($response, 'auth/signin.twig');
+    }
+
+    public function postSignIN($request, $response)
+    {
+        // TODO k;jzfgjk;
+    }
+
 }
