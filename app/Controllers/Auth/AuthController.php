@@ -40,7 +40,7 @@ class AuthController extends BaseController
             'name' => $request->getParam('name'),
             'password' => password_hash($request->getParam('password'),PASSWORD_DEFAULT),
         ]);
-
+        $this->flash->addMessage('info', 'You have been signed up');
         $this->auth->attempt($user->email, $request->getParam('password'));
 
 
@@ -59,6 +59,7 @@ class AuthController extends BaseController
             $request->getParam('password')
         );
         if (!$auth){
+            $this->flash->addMessage('error', 'Введённые данные не корректны))');
             return $response->withRedirect($this->router->pathFor('auth.signin'));
         }
         return $response->withRedirect($this->router->pathFor('home'));
