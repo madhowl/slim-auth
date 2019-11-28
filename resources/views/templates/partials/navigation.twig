@@ -23,7 +23,7 @@
                             {{ auth.user.name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Change password</a>
+                            <a class="dropdown-item" href="{{ path_for('auth.password.change') }}">Change password</a>
                             <a class="dropdown-item" href="#">Profile</a>
                         </div>
                     </li>
