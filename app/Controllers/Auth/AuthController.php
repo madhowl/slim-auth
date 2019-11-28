@@ -19,7 +19,7 @@ class AuthController extends BaseController
     {
         $validation = $this->validator->validate($request, [
             'email' => v::noWhitespace()->notEmpty()->email()->emailavailable(),
-            'name' => v::noWhitespace()->notEmpty()->alpha(),
+            'name' => v::notEmpty()->alpha(),
             'password' => v::noWhitespace()->notEmpty(),
         ]);
 
@@ -32,6 +32,8 @@ class AuthController extends BaseController
             'name' => $request->getParam('name'),
             'password' => password_hash($request->getParam('password'),PASSWORD_DEFAULT),
         ]);
+
+        $this->auth->attempt($user->email, $request->getParam('password'));
 
 
         return $response->withRedirect($this->router->pathFor('home'));
